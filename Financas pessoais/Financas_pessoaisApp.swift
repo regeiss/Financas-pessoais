@@ -9,24 +9,42 @@ import SwiftUI
 import SwiftData
 
 @main
-struct Financas_pessoaisApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+struct PersonalFinanceApp: App {
+    private let dataService: DataService
+    private let firebaseService = FirebaseService.shared
+    
+    init() {
+        // Configura Firebase primeiro
+        firebaseService.configure()
+        
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            self.dataService = try DataService()
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            ErrorManager.shared.handle(error, context: "PersonalFinanceApp.init")
+            fatalError("Falha ao inicializar DataService: \(error)")
         }
-    }()
-
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(dataService.getModelContainer())
+                .task {
+                    // Setup managers
+                    AuthenticationManager.shared.setModelContext(dataService.getModelContainer().mainContext)
+                    
+                    do {
+                        try await dataService.generateSampleData()
+                    } catch {
+                        ErrorManager.shared.handle(error, context: "PersonalFinanceApp.generateSampleData")
+                    }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+                    firebaseService.logEvent(.appBackground)
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                    firebaseService.logEvent(.appForeground)
+                }
         }
-        .modelContainer(sharedModelContainer)
     }
 }

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E1CA233D2E2463EC003AFEF5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E1CA233C2E2463DC003AFEF5 /* .swiftlint.yml */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		E16601282E22A53400FAEFA3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		E16601182E22A53200FAEFA3 /* Financas pessoais.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Financas pessoais.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16601272E22A53400FAEFA3 /* Financas pessoaisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Financas pessoaisTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16601312E22A53400FAEFA3 /* Financas pessoaisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Financas pessoaisUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1CA233C2E2463DC003AFEF5 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		E166010F2E22A53200FAEFA3 = {
 			isa = PBXGroup;
 			children = (
+				E1CA233C2E2463DC003AFEF5 /* .swiftlint.yml */,
 				E166011A2E22A53200FAEFA3 /* Financas pessoais */,
 				E166012A2E22A53400FAEFA3 /* Financas pessoaisTests */,
 				E16601342E22A53400FAEFA3 /* Financas pessoaisUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CA233D2E2463EC003AFEF5 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

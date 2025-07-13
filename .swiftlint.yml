@@ -1,0 +1,18 @@
+// MARK: - .swiftlint.yml
+// .swiftlint.yml
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - strong_iboutlet
+included:
+  - Sources
+excluded:
+  - Pods
+  - .build
+line_length: 120
+type_body_length: 300
+function_body_length: 50
