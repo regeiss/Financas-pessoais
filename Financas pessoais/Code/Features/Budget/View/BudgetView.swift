@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BudgetView: View {
     @Environment(\.modelContext) private var modelContext
@@ -40,7 +41,10 @@ struct BudgetRowView: View {
     
     private var progressPercentage: Double {
         guard budget.limit > 0 else { return 0 }
-        return min(Double(budget.spent / budget.limit), 1.0)
+        let spent = NSDecimalNumber(decimal: budget.spent)
+        let limit = NSDecimalNumber(decimal: budget.limit)
+        let percentage = spent.dividing(by: limit).doubleValue
+        return min(percentage, 1.0)
     }
     
     private var remainingAmount: Decimal {

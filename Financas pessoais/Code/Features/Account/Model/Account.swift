@@ -5,6 +5,9 @@
 //  Created by Roberto Edgar Geiss on 13/07/25.
 //
 
+import Foundation
+import SwiftData
+
 @Model
 final class Account: @unchecked Sendable {
     var id: UUID

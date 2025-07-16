@@ -5,6 +5,8 @@
 //  Created by Roberto Edgar Geiss on 13/07/25.
 //
 
+import SwiftUI
+
 struct ProfileView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var showingEditProfile = false
